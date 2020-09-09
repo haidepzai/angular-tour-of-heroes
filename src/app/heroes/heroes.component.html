@@ -9,21 +9,12 @@
 <!-- [class.some-css-class]="some-condition" -->
 
 <!-- The component should only display the selected hero details if the selectedHero exists. -->
-<div *ngIf="selectedHero">
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- [hero]="selectedHero" is an Angular property binding. 
 
-  <h2>{{selectedHero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedHero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-      <!--[(ngModel)] is Angular's two-way data binding syntax.
-Here it binds the hero.name property to the HTML textbox so that data can flow in both directions: 
-from the hero.name property to the textbox, and from the textbox back to the hero.name. -->
-    </label>
-  </div>
+It's a one way data binding from the selectedHero property of the HeroesComponent to the hero property of the target element, which maps to the hero property of the HeroDetailComponent.
 
-</div>
-
+-->
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

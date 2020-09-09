@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -10,23 +10,27 @@ import { HEROES } from '../mock-heroes';
 
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES; //für die Liste My Heroes
+  heroes: Hero[]; //für die Liste My Heroes
   selectedHero: Hero; //Ausgewählter Hero
 
-  constructor() { }
+  //Inject the HeroService
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    console.log("selected hero: " + this.selectedHero);
+    this.getAllHeroes();
   }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    console.log("selected hero: " + JSON.stringify(this.selectedHero));
+  }
+
+//Observable ist wichtig für asynchron! Da man immer eine Antwort vom Server wartet
+  getAllHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes); //subscribe the observable
   }
 }
 
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+//Parent of hero-detail.component
