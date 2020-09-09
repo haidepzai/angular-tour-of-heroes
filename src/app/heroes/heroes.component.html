@@ -1,0 +1,32 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+<!-- [class.some-css-class]="some-condition" -->
+
+<!-- The component should only display the selected hero details if the selectedHero exists. -->
+<div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+      <!--[(ngModel)] is Angular's two-way data binding syntax.
+Here it binds the hero.name property to the HTML textbox so that data can flow in both directions: 
+from the hero.name property to the textbox, and from the textbox back to the hero.name. -->
+    </label>
+  </div>
+
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
