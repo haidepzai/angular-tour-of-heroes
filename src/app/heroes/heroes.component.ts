@@ -13,7 +13,7 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[]; //für die Liste My Heroes
-  selectedHero: Hero; //Ausgewählter Hero
+  //selectedHero: Hero; //Ausgewählter Hero
 
   //Inject the HeroService
   constructor(private heroService: HeroService, private messageService: MessageService) { }
@@ -23,11 +23,13 @@ export class HeroesComponent implements OnInit {
     this.getAllHeroes();
   }
 
+/*
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
     console.log("selected hero: " + JSON.stringify(this.selectedHero));
     this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
+  */
 
 //Observable ist wichtig für asynchron! Da man immer eine Antwort vom Server wartet
   getAllHeroes(): void {

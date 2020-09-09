@@ -17,9 +17,15 @@ export class HeroService {
 
   //returns an Observable vom Typ Hero (für asynchron), da im Real getHeroes auf Server Response warten muss
   getHeroes(): Observable<Hero[]> {
-    this.messageService.add('HeroService: fetched heroes');
-    return of(HEROES); //von mock-heroes
-}
+      this.messageService.add('HeroService: fetched heroes');
+      return of(HEROES); //von mock-heroes
+  }
+  //Get 1 Hero
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id)); //sucht in der Liste und gibt zurück falls seine id mit der gewünschten id übereinstimmt
+  }
 
 }
 
