@@ -12,11 +12,13 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
+  //This is a typical "service-in-service" scenario: you inject the MessageService into the HeroService which is injected into the HeroesComponent.
   constructor(private messageService: MessageService) { }
 
   //returns an Observable vom Typ Hero (für asynchron), da im Real getHeroes auf Server Response warten muss
   getHeroes(): Observable<Hero[]> {
-  return of(HEROES); //von mock-heroes
+    this.messageService.add('HeroService: fetched heroes');
+    return of(HEROES); //von mock-heroes
 }
 
 }
