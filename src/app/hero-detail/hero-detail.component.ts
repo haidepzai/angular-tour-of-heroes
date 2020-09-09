@@ -21,8 +21,9 @@ export class HeroDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("hero-detail: " + this.hero);
+    console.log("hero-detail before: " + this.hero);
     this.getHero();
+    console.log("hero-detail after: " + JSON.stringify(this.hero));
   }
 
   doSomething() {
