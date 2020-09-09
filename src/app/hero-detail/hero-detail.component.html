@@ -1,4 +1,4 @@
-<div *ngIf="hero">
+<div *ngIf="hero"> <!--hero = Input() hero -->
 
   <h2 (click)="doSomething()">{{hero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{hero.id}}</div>
@@ -14,3 +14,5 @@ from the hero.name property to the textbox, and from the textbox back to the her
 </div>
 
 <button (click)="goBack()">go back</button>
+
+<button (click)="save()">save</button>
